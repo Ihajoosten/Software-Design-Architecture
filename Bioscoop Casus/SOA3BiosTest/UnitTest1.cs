@@ -1,78 +1,135 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Xunit;
+using Casus_Deel_1;
+using System.Collections.Generic;
 
 namespace SOA3BiosTest
 {
     [TestClass]
     public class UnitTest1
     {
-        [Fact]
-        public void SecondTicketFreeStudentWeekend()
+        [TestMethod]
+        public void SecondTicketFalsePremiumTrueDiscountTrue()
         {
+            Movie movie = new Movie("Scream VI");
+            MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2023, 2, 11), 10.0);
 
-            var movieScreening10euro = new MovieScreening(new Movie("Sharknado 2"), new DateTime(2023, 2, 5, 8, 30, 0), 10);
-
-            var movieTickets = new List<MovieTicket>() {
-                new MovieTicket(movieScreening10euro, false, 1, 1),
-                new MovieTicket(movieScreening10euro, false, 1, 2)
+            List<MovieTicket> movieTickets = new List<MovieTicket>(){
+                new MovieTicket(1, 1, true, movieScreening),
+                new MovieTicket(1, 2, true, movieScreening),
+                new MovieTicket(1, 3, true, movieScreening),
+                new MovieTicket(1, 4, true, movieScreening),
+                new MovieTicket(1, 5, true, movieScreening),
+                new MovieTicket(1, 6, true, movieScreening),
+                new MovieTicket(1, 7, true, movieScreening),
+                new MovieTicket(1, 8, true, movieScreening),
+                new MovieTicket(1, 9, true, movieScreening)
             };
 
-            var studentOrder = new Order(1, true);
-            studentOrder.movieTickets.AddRange(movieTickets);
+            Order order = new Order(1, false);
+            order.MovieTickets.AddRange(movieTickets);
 
-            Assert.Equal(10.0, studentOrder.CalculatePrice());
+            Assert.AreEqual(105.30, order.CalculatePrice());
         }
 
-        [Fact]
-        public void SecondTicketFreeStudentWeek()
+        [TestMethod]
+        public void SecondTicketFalsePremiumFalseDiscountFalse()
         {
+            Movie movie = new Movie("Scream VI");
+            MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2023, 2, 10), 15.0);
 
-            var movieScreening10euro = new MovieScreening(new Movie("Sharknado 2"), new DateTime(2023, 2, 6, 8, 30, 0), 10);
-
-            var movieTickets = new List<MovieTicket>() {
-                new MovieTicket(movieScreening10euro, false, 1, 1),
-                new MovieTicket(movieScreening10euro, false, 1, 2)
+            List<MovieTicket> movieTickets = new List<MovieTicket>(){
+                new MovieTicket(1, 1, false, movieScreening),
+                new MovieTicket(1, 2, false, movieScreening)
             };
 
-            var studentOrder = new Order(1, true);
-            studentOrder.movieTickets.AddRange(movieTickets);
+            Order order = new Order(1, false);
+            order.MovieTickets.AddRange(movieTickets);
 
-            Assert.Equal(10.0, studentOrder.CalculatePrice());
+            Assert.AreEqual(30.0, order.CalculatePrice());
+        }
+        
+        [TestMethod]
+        public void SecondTicketTruePremiumFalseDiscountTrue()
+        {
+            Movie movie = new Movie("Scream VI");
+            MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2023, 2, 7), 5.0);
+
+            List<MovieTicket> movieTickets = new List<MovieTicket>(){
+                new MovieTicket(1, 1, false, movieScreening),
+                new MovieTicket(1, 2, false, movieScreening),
+                new MovieTicket(1, 3, false, movieScreening),
+                new MovieTicket(1, 4, false, movieScreening),
+                new MovieTicket(1, 5, false, movieScreening),
+                new MovieTicket(1, 6, false, movieScreening),
+                new MovieTicket(1, 7, false, movieScreening)
+            };
+
+            Order order = new Order(1, true);
+            order.MovieTickets.AddRange(movieTickets);
+
+            Assert.AreEqual(18.0, order.CalculatePrice());
         }
 
-        [Fact]
-        public void SecondTicketFreeNonStudent()
+        [TestMethod]
+        public void SecondTicketTruePremiumTrueDiscountTrue()
         {
+            Movie movie = new Movie("Scream VI");
+            MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2023, 2, 12), 20.0);
 
-            var movieScreening10euro = new MovieScreening(new Movie("Sharknado 2"), new DateTime(2023, 2, 6, 8, 30, 0), 10);
-
-            var movieTickets = new List<MovieTicket>() {
-                new MovieTicket(movieScreening10euro, false, 1, 1),
-                new MovieTicket(movieScreening10euro, false, 1, 2)
+            List<MovieTicket> movieTickets = new List<MovieTicket>(){
+                new MovieTicket(1, 1, true, movieScreening),
+                new MovieTicket(1, 2, true, movieScreening),
+                new MovieTicket(1, 3, true, movieScreening),
+                new MovieTicket(1, 4, true, movieScreening),
+                new MovieTicket(1, 5, true, movieScreening),
+                new MovieTicket(1, 6, true, movieScreening),
+                new MovieTicket(1, 7, true, movieScreening),
+                new MovieTicket(1, 8, true, movieScreening)
             };
 
-            var studentOrder = new Order(1, false);
-            studentOrder.movieTickets.AddRange(movieTickets);
+            Order order = new Order(1, true);
+            order.MovieTickets.AddRange(movieTickets);
 
-            Assert.Equal(10.0, studentOrder.CalculatePrice());
+            Assert.AreEqual(79.20, order.CalculatePrice());
         }
 
-        [Fact]
-        public void SecondTicketNotFreeNonStudent()
+        [TestMethod]
+        public void SecondTicketFalsePremiumTrueDiscountFalse()
         {
+            Movie movie = new Movie("Scream VI");
+            MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2023, 2, 12), 10.0);
 
-            var movieScreening10euro = new MovieScreening(new Movie("Sharknado 2"), new DateTime(2023, 2, 5, 8, 30, 0), 10);
-
-            var movieTickets = new List<MovieTicket>() {
-                new MovieTicket(movieScreening10euro, false, 1, 1),
-                new MovieTicket(movieScreening10euro, false, 1, 2)
+            List<MovieTicket> movieTickets = new List<MovieTicket>(){
+                new MovieTicket(1, 1, true, movieScreening),
+                new MovieTicket(1, 2, true, movieScreening),
+                new MovieTicket(1, 3, true, movieScreening),
+                new MovieTicket(1, 4, true, movieScreening)
             };
 
-            var studentOrder = new Order(1, false);
-            studentOrder.movieTickets.AddRange(movieTickets);
+            Order order = new Order(1, false);
+            order.MovieTickets.AddRange(movieTickets);
 
-            Assert.Equal(20.0, studentOrder.CalculatePrice());
+            Assert.AreEqual(52.0, order.CalculatePrice());
+        }
+
+        [TestMethod]
+        public void SecondTicketTruePremiumTrueDiscountFalse()
+        {
+            Movie movie = new Movie("Scream VI");
+            MovieScreening movieScreening = new MovieScreening(movie, new DateTime(2023, 2, 7), 15.0);
+
+            List<MovieTicket> movieTickets = new List<MovieTicket>(){
+                new MovieTicket(1, 1, true, movieScreening),
+                new MovieTicket(1, 2, true, movieScreening),
+                new MovieTicket(1, 3, true, movieScreening)
+            };
+
+            Order order = new Order(1, false);
+            order.MovieTickets.AddRange(movieTickets);
+
+            Assert.AreEqual(36.0, order.CalculatePrice());
         }
     }
 }

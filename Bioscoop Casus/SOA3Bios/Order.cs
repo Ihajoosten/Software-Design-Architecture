@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Diagnostics;
 
 namespace Casus_Deel_1
 {
@@ -18,70 +19,67 @@ namespace Casus_Deel_1
             this.IsStudentOrder = isStudentOrder;
         }
 
-        public double CalculatePrice()
+        public double CalculatePrice() // BEGIN
         {
             double price = 0.0;
-            bool secondTicketFree = false;
 
-            DayOfWeek dayOfWeek = MovieTickets[0].MovieScreening.DateTime.DayOfWeek;
-            if (IsStudentOrder || (dayOfWeek != DayOfWeek.Friday && dayOfWeek != DayOfWeek.Saturday && dayOfWeek != DayOfWeek.Sunday))
+            if (SecondTicketFree())
             {
-                secondTicketFree = true;
-            }
-
-            if (secondTicketFree)
-            {
+                // A
                 for (int i = 0; i < MovieTickets.Count; i += 2)
                 {
-                    if (MovieTickets[i].IsPremium)
-                    {
-                        if (IsStudentOrder)
-                        {
-                            price += MovieTickets[i].GetPrice() + 2;
-                        }
-                        else
-                        {
-                            price += MovieTickets[i].GetPrice() + 3;
-                        }
-                    } else
-                    {
-                        price += MovieTickets[i].GetPrice();
-                    }
+                    price += PriceAfterPremiumCheck(MovieTickets[i]);
                 }
-
-                if (MovieTickets.Count >= 6)
-                {
-                    double discount = 0.1 * price;
-                    price -= discount;
-                }
+                return PriceAfterDiscount(price, MovieTickets.Count);
             }
-            else
+            // B
+            for (int i = 0; i < MovieTickets.Count; i++)
+               {
+                  price += PriceAfterPremiumCheck(MovieTickets[i]);
+               }
+            return PriceAfterDiscount(price, MovieTickets.Count);
+        }
+
+        public bool SecondTicketFree()
+        {
+            DayOfWeek dayOfWeek = MovieTickets[0].MovieScreening.DateTime.DayOfWeek;
+
+            if (IsStudentOrder || (dayOfWeek != DayOfWeek.Friday && dayOfWeek != DayOfWeek.Saturday && dayOfWeek != DayOfWeek.Sunday))
             {
-                for (int i = 0; i < MovieTickets.Count; i++)
-                {
-                    if (MovieTickets[i].IsPremium)
-                    {
-                        if (IsStudentOrder)
-                        {
-                            price += MovieTickets[i].GetPrice() + 2;
-                        }
-                        else
-                        {
-                            price += MovieTickets[i].GetPrice() + 3;
-                        }
-                    } else
-                    {
-                        price += MovieTickets[i].GetPrice();
-                    }
+                // A
+                return true;
+            }
+            // B
+            return false;
+        }
 
-                    if (MovieTickets.Count >= 6)
-                    {
-                        double discount = 0.1 * price;
-                        price -= discount;
-                    }
-                }
+        public double PriceAfterPremiumCheck(MovieTicket ticket)
+        {
+
+            if (!ticket.IsPremium)
+            {
+                // C
+                return ticket.GetPrice();
             }
 
+            if (IsStudentOrder)
+            {
+                // D
+                return ticket.GetPrice() + 2;
+            }
+            // E
+            return ticket.GetPrice() + 3; ;
+        }
+
+        public double PriceAfterDiscount(double price, int ticketAmount)
+        {
+
+            if (ticketAmount > 6)
+            {
+                // F
+                return price * 0.9;
+            }
+            // G
             return price;
         }
 
