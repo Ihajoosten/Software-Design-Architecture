@@ -26,3 +26,32 @@ C:\Users\QQ\Desktop\Avans\J3\SOA3Bios\SOA3Bios\SOA3Bios\bin\Debug\System.ValueTu
 C:\Users\QQ\Desktop\Avans\J3\SOA3Bios\SOA3Bios\SOA3Bios\obj\Debug\SOA3Bios.csproj.CopyComplete
 C:\Users\QQ\Desktop\Avans\J3\SOA3Bios\SOA3Bios\SOA3Bios\obj\Debug\SOA3Bios.exe
 C:\Users\QQ\Desktop\Avans\J3\SOA3Bios\SOA3Bios\SOA3Bios\obj\Debug\SOA3Bios.pdb
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\SOA3Bios.exe.config
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\SOA3Bios.exe
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\SOA3Bios.pdb
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Buffers.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Memory.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Text.Json.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.ValueTuple.dll
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Buffers.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Memory.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Text.Json.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\bin\Debug\System.ValueTuple.xml
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\obj\Debug\SOA3Bios.csproj.AssemblyReference.cache
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\obj\Debug\SOA3Bios.csproj.SuggestedBindingRedirects.cache
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\obj\Debug\SOA3Bios.csproj.CoreCompileInputs.cache
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\obj\Debug\SOA3Bios.csproj.CopyComplete
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\obj\Debug\SOA3Bios.exe
+C:\Users\ljoosten\OneDrive - Datacon BV\Desktop\SOA3-Casus-Bioscoop\Bioscoop Casus\SOA3Bios\obj\Debug\SOA3Bios.pdb
