@@ -1,30 +1,20 @@
 import { writeFileSync } from "fs";
 import { jsonc } from "jsonc";
-import { IPremiumBehaviour } from "../Functions/CheckPremium/IPremiumBehaviour";
-import { RegularPremium } from "../Functions/CheckPremium/regularPremium";
-import { StudentPremium } from "../Functions/CheckPremium/studentPremium";
-import { CustomerType, TicketExportType } from "./enumTypes";
+import { ExportToJSON } from "../Functions/ExportOrder/exportToJSON";
+import { ExportToText } from "../Functions/ExportOrder/exportToPlainText";
+import { IExportBehaviour } from "../Functions/ExportOrder/IExportBehaviour";
+import { OrderType, TicketExportType } from "./enumTypes";
 import { MovieTicket } from "./movieTicket.model";
 
 export class Order {
   private orderNr: number;
   private seatReservations: Array<MovieTicket> = new Array<MovieTicket>();
-  public PremiumPriceBehaviour: IPremiumBehaviour;
-  public CustomerType: CustomerType;
+  public ExportBehaviour: IExportBehaviour
+  public orderType: OrderType;
 
-  public constructor(orderNr: number, customerType: CustomerType) {
+  public constructor(orderNr: number, orderType: OrderType) {
     this.orderNr = orderNr;
-    this.CustomerType = customerType;
-
-    switch (customerType) {
-      case CustomerType.STUDENT:
-        this.PremiumPriceBehaviour = new StudentPremium();
-        break;
-
-      case CustomerType.REGULAR:
-        this.PremiumPriceBehaviour = new RegularPremium();
-        break;
-    }
+    this.orderType = orderType;
   }
 
   public getOrderNr(): number {
@@ -37,14 +27,15 @@ export class Order {
 
   public calculatePrice(): number {
     let totalPrice = 0.0;
-    let isWeekend = this.isWeekend();
-    //let isSecondTicketFree = this.PremiumPriceBehaviour.isSecondTicketFree(isWeekend);
+    let isSecondTicketFree = this.orderType == OrderType.STUDENT || !this.isWeekend();
 
     for (let i = 0; i < this.seatReservations.length; i++) {
       let ticket = this.seatReservations[i];
-      let ticketPrice = this.PremiumPriceBehaviour.getPremiumPrice(ticket.isPremiumTicket());
+      let ticketPrice = ticket.getPrice();
+
       if (isSecondTicketFree) {
         if (i % 2 == 0) {
+          console.log("HALLO")
           totalPrice += ticketPrice;
         }
       } else {
@@ -52,8 +43,7 @@ export class Order {
       }
     }
 
-    // get 10% discount if true
-    if (this.PremiumPriceBehaviour.getGroupDiscount(isWeekend)) {
+    if (this.orderType !== OrderType.STUDENT && this.seatReservations.length >= 6 && this.isWeekend()) {
       totalPrice *= 0.9;
     }
 
@@ -70,24 +60,20 @@ export class Order {
     }
   }
 
-  public export(filename: string, order: Order, type: TicketExportType): void {
-    switch (type) {
-      case TicketExportType.JSON:
-        try {
-          const data = jsonc.stringify(order, null, 2);
-          writeFileSync(`orders/json/${filename}-${order.getOrderNr()}.json`, data, { flag: 'w' });
-        } catch (err) { console.log(err) }
-        break;
+  public export(order: Order, exportType: TicketExportType): void {
+    switch (exportType) {
       case TicketExportType.PLAINTEXT:
-        try {
-          writeFileSync(`orders/text/${filename}-${order.getOrderNr()}.txt`, order.toString(), { flag: 'w' });
-        } catch (err) { console.log(err); }
+        this.ExportBehaviour = new ExportToText()
+        this.ExportBehaviour.syncWriteFile(order);
+        break;
+      case TicketExportType.JSON:
+        this.ExportBehaviour = new ExportToJSON()
+        this.ExportBehaviour.syncWriteFile(order);
         break;
     }
-
   }
 
   public toString(): string {
-    return `The order number: ${this.orderNr}, this reservation is for: ${this.CustomerType} and the the seat reservations are: ${this.seatReservations}`;
+    return `The order number: ${this.orderNr}, this reservation is for: ${this.orderType} and the the seat reservations are: ${this.seatReservations}`;
   }
 }

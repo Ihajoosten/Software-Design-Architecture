@@ -12,7 +12,6 @@ export class MovieTicket {
   private PremiumBehaviour: IPremiumBehaviour;
   private orderType: OrderType;
 
-
   public constructor(
     movieScreening: MovieScreening,
     isPremium: boolean,
@@ -34,10 +33,6 @@ export class MovieTicket {
         this.PremiumBehaviour = new StudentPremium()
         break;
     }
-  }
-
-  public isPremiumTicket(): boolean {
-    return this.isPremium;
   }
 
   public getPrice(): number {
