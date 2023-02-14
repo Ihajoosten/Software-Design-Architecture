@@ -17,7 +17,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import path, { join } from 'path';
 import { Order } from '../../Models/order.model';
-import { IExport } from './IExport';
+import { IExport } from './IExportBehaviour';
 
 export class ExportToJSON implements IExport {
   // ✅ write to file SYNCHRONOUSLY

@@ -1,4 +1,4 @@
-export enum CustomerType {
+export enum OrderType {
   STUDENT = 'Student',
   REGULAR = 'Regular',
 }

@@ -1,6 +1,4 @@
 import * as fs from "fs";
-import { ExportToJSON } from "../src/Functions/ExportOrder/exportToJSON";
-import { ExportToText } from "../src/Functions/ExportOrder/exportToPlainText";
 import { CustomerType, TicketExportType } from "../src/Models/enumTypes";
 import { Movie } from "../src/Models/movie.model";
 import { MovieScreening } from "../src/Models/moviescreening.model";
@@ -37,13 +35,12 @@ describe("OrderExport class tests", () => {
     expect(fileExists).toBe(true);
   });
 
-
-  // afterAll(() => {
-  //   fs.unlink("./orders/json/WeekendOrderJSON-1234.json", (err) => {
-  //     if (err) throw err;
-  //   });
-  //   fs.unlink("./orders/text/WeekendOrdersPLAIN-1234.txt", (err) => {
-  //     if (err) throw err;
-  //   });
-  // });
+  afterAll(() => {
+    fs.unlink("./orders/json/WeekendOrderJSON-1234.json", (err) => {
+      if (err) throw err;
+    });
+    fs.unlink("./orders/text/WeekendOrdersPLAIN-1234.txt", (err) => {
+      if (err) throw err;
+    });
+  });
 });

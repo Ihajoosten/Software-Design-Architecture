@@ -1,8 +1,9 @@
 import { IPremiumBehaviour } from "./IPremiumBehaviour";
 
-export class StudentPremium implements IPremiumBehaviour {
+export class RegularPremium implements IPremiumBehaviour {
 
   getPremiumPrice(isPremium: boolean): number {
-    return isPremium ? 2 : 0;
+    return isPremium ? 3 : 0;
   }
+
 }

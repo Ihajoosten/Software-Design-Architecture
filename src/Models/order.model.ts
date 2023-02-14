@@ -1,17 +1,15 @@
 import { writeFileSync } from "fs";
 import { jsonc } from "jsonc";
-import path, { join } from "path";
-import { IPremiumTicket } from "../Functions/CheckPremium/IPremiumTicket";
-import { NormalPremium } from "../Functions/CheckPremium/normalPremium";
+import { IPremiumBehaviour } from "../Functions/CheckPremium/IPremiumBehaviour";
+import { RegularPremium } from "../Functions/CheckPremium/regularPremium";
 import { StudentPremium } from "../Functions/CheckPremium/studentPremium";
-// import { IExport } from "../Functions/ExportOrder/IExport";
 import { CustomerType, TicketExportType } from "./enumTypes";
 import { MovieTicket } from "./movieTicket.model";
 
 export class Order {
   private orderNr: number;
   private seatReservations: Array<MovieTicket> = new Array<MovieTicket>();
-  public PremiumPriceBehaviour: IPremiumTicket;
+  public PremiumPriceBehaviour: IPremiumBehaviour;
   public CustomerType: CustomerType;
 
   public constructor(orderNr: number, customerType: CustomerType) {
@@ -24,7 +22,7 @@ export class Order {
         break;
 
       case CustomerType.REGULAR:
-        this.PremiumPriceBehaviour = new NormalPremium();
+        this.PremiumPriceBehaviour = new RegularPremium();
         break;
     }
   }
@@ -40,11 +38,11 @@ export class Order {
   public calculatePrice(): number {
     let totalPrice = 0.0;
     let isWeekend = this.isWeekend();
-    let isSecondTicketFree = this.PremiumPriceBehaviour.isSecondTicketFree(isWeekend);
+    //let isSecondTicketFree = this.PremiumPriceBehaviour.isSecondTicketFree(isWeekend);
 
     for (let i = 0; i < this.seatReservations.length; i++) {
       let ticket = this.seatReservations[i];
-      let ticketPrice = this.PremiumPriceBehaviour.getPremiumPrice(ticket.getPrice(), ticket.isPremiumTicket());
+      let ticketPrice = this.PremiumPriceBehaviour.getPremiumPrice(ticket.isPremiumTicket());
       if (isSecondTicketFree) {
         if (i % 2 == 0) {
           totalPrice += ticketPrice;
@@ -55,7 +53,7 @@ export class Order {
     }
 
     // get 10% discount if true
-    if (this.PremiumPriceBehaviour.getGroupDiscount(this.seatReservations, isWeekend)) {
+    if (this.PremiumPriceBehaviour.getGroupDiscount(isWeekend)) {
       totalPrice *= 0.9;
     }
 

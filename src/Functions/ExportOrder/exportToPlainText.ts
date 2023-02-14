@@ -16,7 +16,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import path, { join } from 'path';
 import { Order } from '../../Models/order.model';
-import { IExport } from './IExport';
+import { IExport } from './IExportBehaviour';
 
 export class ExportToText implements IExport {
   // ✅ write to file SYNCHRONOUSLY
@@ -30,5 +30,8 @@ export class ExportToText implements IExport {
     writeFileSync(join(__dirname, fileName), order.toString(), {
       flag: 'w',
     });
+    try {
+      writeFileSync(`orders/text/${filename}-${order.getOrderNr()}.txt`, order.toString(), { flag: 'w' });
+    } catch (err) { console.log(err); }
   }
 }
