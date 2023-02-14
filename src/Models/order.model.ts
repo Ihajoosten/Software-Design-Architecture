@@ -95,6 +95,10 @@ export class Order implements OrderStateHolder {
     this.orderState = newState
   }
 
+  public HoursUntilMovieChanged(hours: number): void {
+    this.orderState.HoursUntilMovieChanged(hours);
+  }
+
   public GetOrderState(): string {
     return this.orderState.stateToString();
   }

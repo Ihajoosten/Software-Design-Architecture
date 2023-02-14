@@ -10,6 +10,7 @@ export class TemplateState implements OrderState {
   constructor(orderStateHolder: OrderStateHolder) {
     this.orderStateHolder = orderStateHolder;
   }
+
   stateToString(): string {
     return "TemplateState";
   }
@@ -17,12 +18,15 @@ export class TemplateState implements OrderState {
   AddSeat(): void {
     console.log("Added new seat")
   }
+
   RemoveSeat(): void {
     console.log("Removed a seat")
   }
+
   Submit(): void {
     this.orderStateHolder.UpdateState(new SubmittedState(this.orderStateHolder));
   }
+
   Pay(): void {
     console.log("You cannot pay here")
   }
@@ -30,6 +34,7 @@ export class TemplateState implements OrderState {
   Cancel(): void {
     this.orderStateHolder.UpdateState(new CancelledState(this.orderStateHolder));
   }
+
   HoursUntilMovieChanged(hours: number): void {
     console.log("Nothing has happened")
   }
