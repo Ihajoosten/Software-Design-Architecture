@@ -11,7 +11,7 @@ export class ProvisionedState implements OrderState {
   }
 
   stateToString(): string {
-    return "SubmittedState";
+    return "ProvisionedState";
   }
 
   AddSeat(): void {
