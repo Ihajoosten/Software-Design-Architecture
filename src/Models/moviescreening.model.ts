@@ -22,13 +22,6 @@ export class MovieScreening {
   }
 
   public tostring(): string {
-    var result = '';
-
-    result + `Date and Time: ${this.dateAndTime.toLocaleString()}`
-    result + ``
-    result + `Price Per Seat: ${this.pricePerSeat}`
-    result + ``
-    result + `${this.movie} on Weekend: ${this.isWeekend}`
     return `Date & Time:"${this.dateAndTime} \r
             Price Per Seat: ${this.pricePerSeat} \r
             You are going to: ${this.movie} \r

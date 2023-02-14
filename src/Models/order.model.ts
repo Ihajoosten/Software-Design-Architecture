@@ -1,4 +1,3 @@
-import { jsonc } from "jsonc";
 import { ExportToJSON } from "../Functions/ExportOrder/exportToJSON";
 import { ExportToText } from "../Functions/ExportOrder/exportToPlainText";
 import { IExportBehaviour } from "../Functions/ExportOrder/IExportBehaviour";
