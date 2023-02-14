@@ -1,9 +1,10 @@
 import { writeFileSync } from "fs";
+import { jsonc } from "jsonc";
 import path, { join } from "path";
 import { IPremiumTicket } from "../Functions/CheckPremium/IPremiumTicket";
 import { NormalPremium } from "../Functions/CheckPremium/normalPremium";
 import { StudentPremium } from "../Functions/CheckPremium/studentPremium";
-import { IExport } from "../Functions/ExportOrder/IExport";
+// import { IExport } from "../Functions/ExportOrder/IExport";
 import { CustomerType, TicketExportType } from "./enumTypes";
 import { MovieTicket } from "./movieTicket.model";
 
@@ -74,15 +75,15 @@ export class Order {
   public export(filename: string, order: Order, type: TicketExportType): void {
     switch (type) {
       case TicketExportType.JSON:
-        const data = JSON.stringify(order, null, 2);
-        writeFileSync(join(__dirname, path.join(`orders/json/${filename}-${this.getOrderNr()}.json`)), data.toString(), {
-          flag: 'w',
-        });
+        try {
+          const data = jsonc.stringify(order, null, 2);
+          writeFileSync(`orders/json/${filename}-${order.getOrderNr()}.json`, data, { flag: 'w' });
+        } catch (err) { console.log(err) }
         break;
       case TicketExportType.PLAINTEXT:
-        writeFileSync(join(__dirname, path.join(`orders/text/${filename}-${this.getOrderNr()}.txt`)), order.toString(), {
-          flag: 'w',
-        });
+        try {
+          writeFileSync(`orders/text/${filename}-${order.getOrderNr()}.txt`, order.toString(), { flag: 'w' });
+        } catch (err) { console.log(err); }
         break;
     }
 
