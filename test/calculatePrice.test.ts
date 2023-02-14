@@ -13,7 +13,7 @@ describe("Order class testing public methods", () => {
 });
 
 describe("Test method Calculate Price", () => {
-  it.only("Student orders 1 premium ticket in the weekend", () => {
+  it("Student orders 1 premium ticket in the weekend", () => {
     var order = new Order(2140212, OrderType.STUDENT);
     var movie = new Movie("Scream VI");
     var movieScreening = new MovieScreening(new Date("2/18/2023"), 15, true, movie);

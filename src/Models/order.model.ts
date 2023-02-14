@@ -35,7 +35,6 @@ export class Order {
 
       if (isSecondTicketFree) {
         if (i % 2 == 0) {
-          console.log("HALLO")
           totalPrice += ticketPrice;
         }
       } else {
