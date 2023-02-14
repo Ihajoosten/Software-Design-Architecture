@@ -2,7 +2,7 @@
   "name": "soa3-casus-bioscoop",
   "version": "1.0.0",
   "description": "Typescript Version of Bioscoop Casus SOA3",
-  "main": "main.ts",
+  "main": "app.ts",
   "scripts": {
     "test": "jest --coverage",
     "start": "ts-node src/test.ts",
@@ -33,6 +33,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "tsc": "^2.0.4"
   }
 }
