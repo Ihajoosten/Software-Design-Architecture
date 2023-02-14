@@ -1,0 +1,13 @@
+The order number: 1234, this reservation is for: Student and the the seat reservations are: Ticket with row: 2  
+            Seat: 15  
+            Premium Ticket: yes  
+            Moviescreening: Date & Time:"Sat Feb 04 2023 12:00:00 GMT+0100 (Central European Standard Time) 
+            Price Per Seat: 2 
+            You are going to: Movie: Leuke film 
+            On the weekend: false,Ticket with row: 2  
+            Seat: 16  
+            Premium Ticket: yes  
+            Moviescreening: Date & Time:"Sat Feb 04 2023 12:00:00 GMT+0100 (Central European Standard Time) 
+            Price Per Seat: 2 
+            You are going to: Movie: Leuke film 
+            On the weekend: false

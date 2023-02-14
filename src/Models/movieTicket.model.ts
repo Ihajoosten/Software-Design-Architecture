@@ -44,9 +44,9 @@ export class MovieTicket {
   }
 
   public toString(): string {
-    return `Ticket with row: ${this.rowNr} \\r \
-            Seat: ${this.seatNr} \\r 
-            Premium Ticket: ${this.isPremium ? "yes " : "no"} \\r
+    return `Ticket with row: ${this.rowNr} \r 
+            Seat: ${this.seatNr} \r 
+            Premium Ticket: ${this.isPremium ? "yes " : "no"} \r
             Moviescreening: ${this.movieScreening.tostring()}`;
   }
 }
