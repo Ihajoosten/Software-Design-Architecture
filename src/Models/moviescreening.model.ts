@@ -29,9 +29,9 @@ export class MovieScreening {
     result + `Price Per Seat: ${this.pricePerSeat}`
     result + ``
     result + `${this.movie} on Weekend: ${this.isWeekend}`
-    return `Date & Time:"${this.dateAndTime} \\r
-            Price Per Seat: ${this.pricePerSeat} \\r
-            You are going to: ${this.movie} \\r
+    return `Date & Time:"${this.dateAndTime} \r
+            Price Per Seat: ${this.pricePerSeat} \r
+            You are going to: ${this.movie} \r
             On the weekend: ${this.isWeekend}`;
   }
 }

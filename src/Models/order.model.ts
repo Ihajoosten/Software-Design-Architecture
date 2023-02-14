@@ -1,16 +1,19 @@
-import { writeFileSync } from "fs";
 import { jsonc } from "jsonc";
 import { ExportToJSON } from "../Functions/ExportOrder/exportToJSON";
 import { ExportToText } from "../Functions/ExportOrder/exportToPlainText";
 import { IExportBehaviour } from "../Functions/ExportOrder/IExportBehaviour";
+import { OrderState } from "../Functions/OrderState/OrderState";
+import { OrderStateHolder } from "../Functions/OrderState/OrderStateHolder";
+import { TemplateState } from "../Functions/OrderState/TemplateState";
 import { OrderType, TicketExportType } from "./enumTypes";
 import { MovieTicket } from "./movieTicket.model";
 
-export class Order {
+export class Order implements OrderStateHolder {
   private orderNr: number;
   private seatReservations: Array<MovieTicket> = new Array<MovieTicket>();
   public ExportBehaviour: IExportBehaviour
   public orderType: OrderType;
+  public orderState: OrderState = new TemplateState(this);
 
   public constructor(orderNr: number, orderType: OrderType) {
     this.orderNr = orderNr;
@@ -74,5 +77,29 @@ export class Order {
 
   public toString(): string {
     return `The order number: ${this.orderNr}, this reservation is for: ${this.orderType} and the the seat reservations are: ${this.seatReservations}`;
+  }
+
+  public Submit(): void {
+    this.orderState.Submit();
+  }
+
+  public Pay(): void {
+    this.orderState.Pay();
+  }
+
+  public Cancel(): void {
+    this.orderState.Cancel();
+  }
+
+  public UpdateState(newState: OrderState): void {
+    this.orderState = newState
+  }
+
+  public HoursUntilMovieChanged(hours: number): void {
+    this.orderState.HoursUntilMovieChanged(hours);
+  }
+
+  public GetOrderState(): string {
+    return this.orderState.stateToString();
   }
 }
