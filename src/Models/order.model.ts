@@ -1,3 +1,4 @@
+import { jsonc } from "jsonc";
 import { ExportToJSON } from "../Functions/ExportOrder/exportToJSON";
 import { ExportToText } from "../Functions/ExportOrder/exportToPlainText";
 import { IExportBehaviour } from "../Functions/ExportOrder/IExportBehaviour";
@@ -92,5 +93,9 @@ export class Order implements OrderStateHolder {
 
   public UpdateState(newState: OrderState): void {
     this.orderState = newState
+  }
+
+  public GetOrderState(): string {
+    return jsonc.stringify(this.orderState, null, 2)
   }
 }
