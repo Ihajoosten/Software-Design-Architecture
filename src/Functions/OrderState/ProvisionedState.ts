@@ -10,6 +10,10 @@ export class ProvisionedState implements OrderState {
     this.orderStateHolder = orderStateHolder;
   }
 
+  stateToString(): string {
+    return "SubmittedState";
+  }
+
   AddSeat(): void {
     console.log("Order is solid");
   }

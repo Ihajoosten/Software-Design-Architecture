@@ -10,6 +10,9 @@ export class TemplateState implements OrderState {
   constructor(orderStateHolder: OrderStateHolder) {
     this.orderStateHolder = orderStateHolder;
   }
+  stateToString(): string {
+    return "TemplateState";
+  }
 
   AddSeat(): void {
     console.log("Added new seat")

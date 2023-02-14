@@ -8,6 +8,10 @@ export class CancelledState implements OrderState {
     this.orderStateHolder = orderStateHolder;
   }
 
+  stateToString(): string {
+    return "CancelledState";
+  }
+
   AddSeat(): void {
     console.log("Order is Cancled");
   }

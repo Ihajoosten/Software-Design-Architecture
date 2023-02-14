@@ -96,6 +96,6 @@ export class Order implements OrderStateHolder {
   }
 
   public GetOrderState(): string {
-    return jsonc.stringify(this.orderState, null, 2)
+    return this.orderState.stateToString();
   }
 }

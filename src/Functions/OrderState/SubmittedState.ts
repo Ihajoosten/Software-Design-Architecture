@@ -10,6 +10,9 @@ export class SubmittedState implements OrderState {
   constructor(orderStateHolder: OrderStateHolder) {
     this.orderStateHolder = orderStateHolder;
   }
+  stateToString(): string {
+    return "SubmittedState";
+  }
 
   AddSeat(): void {
     console.log("Added new seat");

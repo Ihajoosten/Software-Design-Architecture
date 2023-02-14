@@ -8,6 +8,10 @@ export class FinishedState implements OrderState {
     this.orderStateHolder = orderStateHolder;
   }
 
+  stateToString(): string {
+    return "FinishedState";
+  }
+
   AddSeat(): void {
     console.log("Order is Finished");
   }

@@ -4,5 +4,6 @@ export interface OrderState {
   Submit(): void;
   Pay(): void;
   Cancel(): void;
-  HoursUntilMovieChanged(hours: number): void
+  HoursUntilMovieChanged(hours: number): void;
+  stateToString(): string;
 }
