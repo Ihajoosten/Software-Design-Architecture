@@ -1,5 +1,5 @@
 import { Order } from "../../Models/order.model";
 
 export interface IExport {
-  exportOrder(order: Order): void;
+  syncWriteFile(order: Order): void;
 }

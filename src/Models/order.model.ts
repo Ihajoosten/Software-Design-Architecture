@@ -1,8 +1,11 @@
+import { writeFileSync } from "fs";
+import { jsonc } from "jsonc";
+import path, { join } from "path";
 import { IPremiumTicket } from "../Functions/CheckPremium/IPremiumTicket";
 import { NormalPremium } from "../Functions/CheckPremium/normalPremium";
 import { StudentPremium } from "../Functions/CheckPremium/studentPremium";
-import { IExport } from "../Functions/ExportOrder/IExport";
-import { CustomerType } from "./enumTypes";
+// import { IExport } from "../Functions/ExportOrder/IExport";
+import { CustomerType, TicketExportType } from "./enumTypes";
 import { MovieTicket } from "./movieTicket.model";
 
 export class Order {
@@ -69,12 +72,21 @@ export class Order {
     }
   }
 
-  public export(exportFunc: IExport): void {
-    try {
-      exportFunc.exportOrder(this);
-    } catch (error) {
-      throw new Error("Invalid data format");
+  public export(filename: string, order: Order, type: TicketExportType): void {
+    switch (type) {
+      case TicketExportType.JSON:
+        try {
+          const data = jsonc.stringify(order, null, 2);
+          writeFileSync(`orders/json/${filename}-${order.getOrderNr()}.json`, data, { flag: 'w' });
+        } catch (err) { console.log(err) }
+        break;
+      case TicketExportType.PLAINTEXT:
+        try {
+          writeFileSync(`orders/text/${filename}-${order.getOrderNr()}.txt`, order.toString(), { flag: 'w' });
+        } catch (err) { console.log(err); }
+        break;
     }
+
   }
 
   public toString(): string {

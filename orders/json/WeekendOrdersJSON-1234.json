@@ -1,0 +1,39 @@
+{
+  "seatReservations": [
+    {
+      "rowNr": 2,
+      "seatNr": 15,
+      "movieScreening": {
+        "dateAndTime": "2023-02-04T11:00:00.000Z",
+        "pricePerSeat": 2,
+        "isWeekend": false,
+        "movie": {
+          "movieScreening": [
+            "[Circular]"
+          ],
+          "title": "Leuke film"
+        }
+      },
+      "isPremiumReservation": true
+    },
+    {
+      "rowNr": 2,
+      "seatNr": 16,
+      "movieScreening": {
+        "dateAndTime": "2023-02-04T11:00:00.000Z",
+        "pricePerSeat": 2,
+        "isWeekend": false,
+        "movie": {
+          "movieScreening": [
+            "[Circular]"
+          ],
+          "title": "Leuke film"
+        }
+      },
+      "isPremiumReservation": true
+    }
+  ],
+  "orderNr": 1234,
+  "CustomerType": "Student",
+  "PremiumPriceBehaviour": {}
+}

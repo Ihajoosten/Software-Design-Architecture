@@ -23,6 +23,5 @@ order.addSeatReservation(ticket5);
 order.addSeatReservation(ticket6);
 
 console.log("Orderprice is: " + order.calculatePrice());
+// order.export
 
-const format = TicketExportType.JSON;
-order.export(this);
