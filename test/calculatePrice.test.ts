@@ -14,22 +14,22 @@ describe("Order class testing public methods", () => {
 
 describe("Test method Calculate Price", () => {
   it("Student orders 1 premium ticket in the weekend", () => {
-    var order = new Order(2140212, OrderType.STUDENT);
-    var movie = new Movie("Scream VI");
-    var movieScreening = new MovieScreening(new Date("2/18/2023"), 15, true, movie);
+    const order = new Order(2140212, OrderType.STUDENT);
+    let movie = new Movie("Scream VI");
+    let movieScreening = new MovieScreening(new Date("2/18/2023"), 15, true, movie);
     movie.addScreening(movieScreening);
-    var ticket = new MovieTicket(movieScreening, true, 1, 1, order.orderType);
+    let ticket = new MovieTicket(movieScreening, true, 1, 1, order.orderType);
     order.addSeatReservation(ticket)
     expect(order.calculatePrice()).toBe(17)
   })
 
   it("A student orders premium tickets not in the weekend with second ticket free", () => {
-    var order = new Order(2140212, OrderType.STUDENT);
-    var movie = new Movie("Scream VI");
-    var movieScreening = new MovieScreening(new Date("2/14/2023"), 15, false, movie);
+    const order = new Order(2140212, OrderType.STUDENT);
+    let movie = new Movie("Scream VI");
+    let movieScreening = new MovieScreening(new Date("2/14/2023"), 15, false, movie);
     movie.addScreening(movieScreening);
-    var ticket = new MovieTicket(movieScreening, true, 1, 1, order.orderType);
-    var ticket2 = new MovieTicket(movieScreening, true, 1, 2, order.orderType);
+    let ticket = new MovieTicket(movieScreening, true, 1, 1, order.orderType);
+    let ticket2 = new MovieTicket(movieScreening, true, 1, 2, order.orderType);
     order.addSeatReservation(ticket)
     order.addSeatReservation(ticket2)
     expect(order.calculatePrice()).toBe(17)
