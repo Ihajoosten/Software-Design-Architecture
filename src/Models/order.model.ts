@@ -119,6 +119,7 @@ export class Order implements IOrderStateHolder, IPublisher {
     this.orderState.Cancel();
   }
 
+  // stuur notificatie wanneer de state van Order veranderd || Pay() - Submit() -  Cancel()
   public UpdateState(newState: IOrderState): void {
     this.orderState = newState;
     this.Publish(newState);
