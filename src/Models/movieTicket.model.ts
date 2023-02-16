@@ -5,13 +5,12 @@ import { RegularPremium } from "../strategy-pattern-price/regularPremium";
 import { StudentPremium } from "../strategy-pattern-price/studentPremium";
 
 export class MovieTicket {
+  private isPremium: boolean;
+  private movieScreening: MovieScreening;
+  private orderType: OrderType;
+  private PremiumBehaviour: IPremiumBehaviour;
   private rowNr: number;
   private seatNr: number;
-  private movieScreening: MovieScreening;
-  private isPremium: boolean;
-  private PremiumBehaviour: IPremiumBehaviour;
-  private orderType: OrderType;
-
   public constructor(
     movieScreening: MovieScreening,
     isPremium: boolean,
@@ -35,15 +34,15 @@ export class MovieTicket {
     }
   }
 
+  public getMovieScreening(): MovieScreening {
+    return this.movieScreening;
+  }
+
   public getPrice(): number {
     return (
       this.movieScreening.getPricePerSeat() +
       this.PremiumBehaviour.getPremiumPrice(this.isPremium)
     );
-  }
-
-  public getMovieScreening(): MovieScreening {
-    return this.movieScreening;
   }
 
   public toString(): string {

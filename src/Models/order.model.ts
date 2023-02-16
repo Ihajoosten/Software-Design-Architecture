@@ -13,8 +13,8 @@ export class Order implements IOrderStateHolder, IPublisher {
   private orderNr: number;
   private seatReservations: Array<MovieTicket> = new Array<MovieTicket>();
   public ExportBehaviour: IExportBehaviour;
-  public orderType: OrderType;
   public orderState: IOrderState;
+  public orderType: OrderType;
   public subscribers: Array<ISubscriber>;
 
   public constructor(orderNr: number, orderType: OrderType) {
