@@ -6,7 +6,12 @@ export class MovieScreening {
   private isWeekend: boolean;
   private movie: Movie;
 
-  constructor(dateAndTime: Date, pricePerSeat: number, isWeekend: boolean, movie: Movie) {
+  constructor(
+    dateAndTime: Date,
+    pricePerSeat: number,
+    isWeekend: boolean,
+    movie: Movie
+  ) {
     this.dateAndTime = dateAndTime;
     this.pricePerSeat = pricePerSeat;
     this.isWeekend = isWeekend;

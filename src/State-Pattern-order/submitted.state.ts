@@ -31,13 +31,17 @@ export class SubmittedState implements IOrderState {
   }
 
   Cancel(): void {
-    this.orderStateHolder.UpdateState(new CancelledState(this.orderStateHolder))
+    this.orderStateHolder.UpdateState(
+      new CancelledState(this.orderStateHolder)
+    );
   }
 
   HoursUntilMovieChanged(hours: number): void {
     if (hours < 24) {
-      console.log("Reminder to send Payment!")
-      this.orderStateHolder.UpdateState(new ProvisionedState(this.orderStateHolder));
+      console.log("Reminder to send Payment!");
+      this.orderStateHolder.UpdateState(
+        new ProvisionedState(this.orderStateHolder)
+      );
     }
   }
 }

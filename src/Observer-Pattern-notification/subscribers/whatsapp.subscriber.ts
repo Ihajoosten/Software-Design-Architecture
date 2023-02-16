@@ -5,7 +5,6 @@ import { IWhatsappService } from "../interfaces/IWhatsappService";
 import { WhatsappService } from "../services/whatsapp.service";
 
 export class WhatsappSubscriber implements ISubscriber {
-
   private service: IWhatsappService;
 
   public constructor() {

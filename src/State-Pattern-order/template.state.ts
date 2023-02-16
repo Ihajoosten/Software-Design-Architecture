@@ -4,7 +4,6 @@ import { IOrderStateHolder } from "./IOrderStateHolder";
 import { SubmittedState } from "./submitted.state";
 
 export class TemplateState implements IOrderState {
-
   private readonly orderStateHolder: IOrderStateHolder;
 
   constructor(orderStateHolder: IOrderStateHolder) {
@@ -16,26 +15,30 @@ export class TemplateState implements IOrderState {
   }
 
   AddSeat(): void {
-    console.log("Added new seat")
+    console.log("Added new seat");
   }
 
   RemoveSeat(): void {
-    console.log("Removed a seat")
+    console.log("Removed a seat");
   }
 
   Submit(): void {
-    this.orderStateHolder.UpdateState(new SubmittedState(this.orderStateHolder));
+    this.orderStateHolder.UpdateState(
+      new SubmittedState(this.orderStateHolder)
+    );
   }
 
   Pay(): void {
-    console.log("You cannot pay here")
+    console.log("You cannot pay here");
   }
 
   Cancel(): void {
-    this.orderStateHolder.UpdateState(new CancelledState(this.orderStateHolder));
+    this.orderStateHolder.UpdateState(
+      new CancelledState(this.orderStateHolder)
+    );
   }
 
   HoursUntilMovieChanged(hours: number): void {
-    console.log("Nothing has happened")
+    console.log("Nothing has happened");
   }
 }

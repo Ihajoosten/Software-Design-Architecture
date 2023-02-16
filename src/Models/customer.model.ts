@@ -14,6 +14,8 @@ export class Customer {
 
   public AddOrder(order: Order): void {
     this.orders.push(order);
-    order.Subscribe(NotificationExtensions.GetSubscribers(this.notificationType))
+    order.Subscribe(
+      NotificationExtensions.GetSubscribers(this.notificationType)
+    );
   }
 }

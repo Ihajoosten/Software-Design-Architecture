@@ -13,14 +13,13 @@ describe("Order class testing the State of Order", () => {
 
   it("should change the state to SubmittedState after submitting from the TemplateState", () => {
     order.Submit();
-    expect(order.GetOrderState()).toBe(SubmittedState.name)
+    expect(order.GetOrderState()).toBe(SubmittedState.name);
   });
 
   it("should change the state to CancledState after canceling from the TemplateState", () => {
     order.Cancel();
-    expect(order.GetOrderState()).toBe(CancelledState.name)
+    expect(order.GetOrderState()).toBe(CancelledState.name);
   });
-
 });
 
 describe("Testing the SubmittedState", () => {
@@ -31,17 +30,17 @@ describe("Testing the SubmittedState", () => {
   });
 
   it("Check the SubmittedState as begin point", () => {
-    expect(order.GetOrderState()).toBe(SubmittedState.name)
+    expect(order.GetOrderState()).toBe(SubmittedState.name);
   });
 
   it("should change the state to Finished after submitting from the SubmittedState", () => {
     order.Pay();
-    expect(order.GetOrderState()).toBe(FinishedState.name)
+    expect(order.GetOrderState()).toBe(FinishedState.name);
   });
 
   it("should change the state to CancledState after canceling from the SubmittedState", () => {
     order.Cancel();
-    expect(order.GetOrderState()).toBe(CancelledState.name)
+    expect(order.GetOrderState()).toBe(CancelledState.name);
   });
 });
 
@@ -53,14 +52,13 @@ describe("Testing the ProvisionedState > 12 && < 24 hours", () => {
   });
 
   it("Check the state to be Provisioned", () => {
-    order.HoursUntilMovieChanged(20)
-    expect(order.GetOrderState()).toBe(ProvisionedState.name)
+    order.HoursUntilMovieChanged(20);
+    expect(order.GetOrderState()).toBe(ProvisionedState.name);
   });
 
   it("Check the state to be Cancelled", () => {
-    order.HoursUntilMovieChanged(20)
-    order.HoursUntilMovieChanged(8)
-    expect(order.GetOrderState()).toBe(CancelledState.name)
+    order.HoursUntilMovieChanged(20);
+    order.HoursUntilMovieChanged(8);
+    expect(order.GetOrderState()).toBe(CancelledState.name);
   });
 });
-

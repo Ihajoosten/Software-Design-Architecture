@@ -12,7 +12,7 @@ import { MovieTicket } from "./movieTicket.model";
 export class Order implements IOrderStateHolder, IPublisher {
   private orderNr: number;
   private seatReservations: Array<MovieTicket> = new Array<MovieTicket>();
-  public ExportBehaviour: IExportBehaviour
+  public ExportBehaviour: IExportBehaviour;
   public orderType: OrderType;
   public orderState: IOrderState = new TemplateState(this);
   public subscribers: Array<ISubscriber>;
@@ -34,7 +34,9 @@ export class Order implements IOrderStateHolder, IPublisher {
   }
 
   Publish(orderState: IOrderState): void {
-    this.subscribers.forEach(sub => { sub.StatusUpdate(orderState) });
+    this.subscribers.forEach((sub) => {
+      sub.StatusUpdate(orderState);
+    });
   }
 
   public getOrderNr(): number {
@@ -47,7 +49,8 @@ export class Order implements IOrderStateHolder, IPublisher {
 
   public calculatePrice(): number {
     let totalPrice = 0.0;
-    let isSecondTicketFree = this.orderType == OrderType.STUDENT || !this.isWeekend();
+    let isSecondTicketFree =
+      this.orderType == OrderType.STUDENT || !this.isWeekend();
 
     for (let i = 0; i < this.seatReservations.length; i++) {
       let ticket = this.seatReservations[i];
@@ -62,7 +65,11 @@ export class Order implements IOrderStateHolder, IPublisher {
       }
     }
 
-    if (this.orderType !== OrderType.STUDENT && this.seatReservations.length >= 6 && this.isWeekend()) {
+    if (
+      this.orderType !== OrderType.STUDENT &&
+      this.seatReservations.length >= 6 &&
+      this.isWeekend()
+    ) {
       totalPrice *= 0.9;
     }
 
@@ -73,7 +80,10 @@ export class Order implements IOrderStateHolder, IPublisher {
   private isWeekend(): boolean {
     let weekendDays: Array<number> = [0, 5, 6]; //sunday, friday, saturday
     for (let ticket of this.seatReservations) {
-      let weekdayOfScreening = ticket.getMovieScreening().getDateAndTime().getDay(); //number of weekday
+      let weekdayOfScreening = ticket
+        .getMovieScreening()
+        .getDateAndTime()
+        .getDay(); //number of weekday
       //if weekdayOfScreening is in weekendDays
       return weekendDays.includes(weekdayOfScreening) ? true : false;
     }
@@ -82,11 +92,11 @@ export class Order implements IOrderStateHolder, IPublisher {
   public export(order: Order, exportType: TicketExportType): void {
     switch (exportType) {
       case TicketExportType.PLAINTEXT:
-        this.ExportBehaviour = new ExportToText()
+        this.ExportBehaviour = new ExportToText();
         this.ExportBehaviour.syncWriteFile(order);
         break;
       case TicketExportType.JSON:
-        this.ExportBehaviour = new ExportToJSON()
+        this.ExportBehaviour = new ExportToJSON();
         this.ExportBehaviour.syncWriteFile(order);
         break;
     }
@@ -109,7 +119,7 @@ export class Order implements IOrderStateHolder, IPublisher {
   }
 
   public UpdateState(newState: IOrderState): void {
-    this.orderState = newState
+    this.orderState = newState;
     this.Publish(newState);
   }
 

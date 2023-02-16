@@ -31,10 +31,15 @@ export class ProvisionedState implements IOrderState {
   }
 
   Cancel(): void {
-    this.orderStateHolder.UpdateState(new CancelledState(this.orderStateHolder))
+    this.orderStateHolder.UpdateState(
+      new CancelledState(this.orderStateHolder)
+    );
   }
 
   HoursUntilMovieChanged(hours: number): void {
-    if (hours < 12) this.orderStateHolder.UpdateState(new CancelledState(this.orderStateHolder));
+    if (hours < 12)
+      this.orderStateHolder.UpdateState(
+        new CancelledState(this.orderStateHolder)
+      );
   }
 }

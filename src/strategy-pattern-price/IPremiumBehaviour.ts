@@ -1,3 +1,3 @@
 export interface IPremiumBehaviour {
-  getPremiumPrice(isPremium: boolean): number
+  getPremiumPrice(isPremium: boolean): number;
 }
