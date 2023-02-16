@@ -6,7 +6,7 @@ import { Row } from "../src/composite-pattern-cinema/row.component";
 import { Seat } from "../src/composite-pattern-cinema/seat.component";
 
 describe("Composite tests", () => {
-  it.only("LogVisitor test", () => {
+  it("LogVisitor test", () => {
     let cinema = new Cinema("Luc&Erdem Cinema");
     let room = new Room("Room B");
     cinema.addComponent(room);
@@ -23,6 +23,6 @@ describe("Composite tests", () => {
     console.log(logVisitor.visitHall(hall));
 
     expect(true).toBeTruthy();
-});
+  });
 
 });
