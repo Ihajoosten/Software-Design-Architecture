@@ -1,5 +1,4 @@
-import { IPublisher } from "../Observer-Pattern-notification/interfaces/IPublisher";
-import { ISubscriber } from "../Observer-Pattern-notification/interfaces/ISubscriber";
+
 import { IOrderState } from "../State-Pattern-order/interfaces/IOrderState";
 import { IOrderStateHolder } from "../State-Pattern-order/interfaces/IOrderStateHolder";
 import { TemplateState } from "../State-Pattern-order/template.state";
@@ -9,35 +8,17 @@ import { IExportBehaviour } from "../strategy-pattern-export/interfaces/IExportB
 import { OrderType, TicketExportType } from "./enumTypes";
 import { MovieTicket } from "./movieTicket.model";
 
-export class Order implements IOrderStateHolder, IPublisher {
+export class Order implements IOrderStateHolder {
   private orderNr: number;
   private seatReservations: Array<MovieTicket> = new Array<MovieTicket>();
   public ExportBehaviour: IExportBehaviour;
-  public orderType: OrderType;
   public orderState: IOrderState;
-  public subscribers: Array<ISubscriber>;
+  public orderType: OrderType;
 
   public constructor(orderNr: number, orderType: OrderType) {
     this.orderNr = orderNr;
     this.orderType = orderType;
-    this.subscribers = new Array<ISubscriber>();
     this.orderState = new TemplateState(this);
-  }
-
-  // Notify
-  public Subscribe(subscriber: ISubscriber): void {
-    this.subscribers.push(subscriber);
-  }
-
-  public UnSubscribe(subscriber: ISubscriber): void {
-    const index = this.subscribers.indexOf(subscriber, 0);
-    if (index > -1) this.subscribers.splice(index, 1);
-  }
-
-  public Publish(orderState: IOrderState): void {
-    this.subscribers.forEach((sub) => {
-      sub.StatusUpdate(orderState);
-    });
   }
 
   public getOrderNr(): number {
@@ -122,7 +103,6 @@ export class Order implements IOrderStateHolder, IPublisher {
   // stuur notificatie wanneer de state van Order veranderd || Pay() - Submit() -  Cancel()
   public UpdateState(newState: IOrderState): void {
     this.orderState = newState;
-    this.Publish(newState);
   }
 
   public HoursUntilMovieChanged(hours: number): void {

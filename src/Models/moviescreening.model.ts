@@ -2,10 +2,9 @@ import { Movie } from "./movie.model";
 
 export class MovieScreening {
   private dateAndTime: Date;
-  private pricePerSeat: number;
   private isWeekend: boolean;
   private movie: Movie;
-
+  private pricePerSeat: number;
   constructor(
     dateAndTime: Date,
     pricePerSeat: number,
@@ -18,12 +17,12 @@ export class MovieScreening {
     this.movie = movie;
   }
 
-  public getPricePerSeat(): number {
-    return this.pricePerSeat;
-  }
-
   public getDateAndTime(): Date {
     return this.dateAndTime;
+  }
+
+  public getPricePerSeat(): number {
+    return this.pricePerSeat;
   }
 
   public tostring(): string {

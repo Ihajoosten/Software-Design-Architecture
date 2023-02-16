@@ -14,18 +14,6 @@ export class SubmittedState implements IOrderState {
     console.log("New seat added to the Order");
   }
 
-  RemoveSeat(): void {
-    console.log("Seat removed from the Order");
-  }
-
-  Submit(): void {
-    console.log("Already submitted order!");
-  }
-
-  Pay(): void {
-    this.orderStateHolder.UpdateState(new FinishedState(this.orderStateHolder));
-  }
-
   Cancel(): void {
     this.orderStateHolder.UpdateState(
       new CancelledState(this.orderStateHolder)
@@ -39,5 +27,17 @@ export class SubmittedState implements IOrderState {
         new ProvisionedState(this.orderStateHolder)
       );
     }
+  }
+
+  Pay(): void {
+    this.orderStateHolder.UpdateState(new FinishedState(this.orderStateHolder));
+  }
+
+  RemoveSeat(): void {
+    console.log("Seat removed from the Order");
+  }
+
+  Submit(): void {
+    console.log("Already submitted order!");
   }
 }

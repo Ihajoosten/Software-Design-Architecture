@@ -1,9 +1,8 @@
 import { MovieScreening } from "./moviescreening.model";
 
 export class Movie {
-  private title: string;
   private movieScreening: Array<MovieScreening> = new Array<MovieScreening>();
-
+  private title: string;
   constructor(title: string) {
     this.title = title;
   }

@@ -13,6 +13,19 @@ export class FinishedState implements IOrderState {
       "You cannot add a new seat because the order is already finished!"
     );
   }
+
+  Cancel(): void {
+    console.log("The Order is now finished");
+  }
+
+  HoursUntilMovieChanged(hours: number): void {
+    console.log("Order is Finished");
+  }
+
+  Pay(): void {
+    console.log("You cannot pay for the order because it is already finished!");
+  }
+
   RemoveSeat(): void {
     console.log(
       "You cannot remove a seat because the order is already finished"
@@ -22,14 +35,5 @@ export class FinishedState implements IOrderState {
     console.log(
       "You cannot submit the order because it already has been finished!"
     );
-  }
-  Pay(): void {
-    console.log("You cannot pay for the order because it is already finished!");
-  }
-  Cancel(): void {
-    console.log("The Order is now finished");
-  }
-  HoursUntilMovieChanged(hours: number): void {
-    console.log("Order is Finished");
   }
 }
