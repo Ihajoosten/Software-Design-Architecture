@@ -1,9 +1,9 @@
-import { CancelledState } from "../src/Functions/OrderState/CancelledState";
-import { FinishedState } from "../src/Functions/OrderState/FinishedState";
-import { ProvisionedState } from "../src/Functions/OrderState/ProvisionedState";
-import { SubmittedState } from "../src/Functions/OrderState/SubmittedState";
 import { OrderType } from "../src/Models/enumTypes";
 import { Order } from "../src/Models/order.model";
+import { CancelledState } from "../src/State-Pattern-order/cancelled.state";
+import { FinishedState } from "../src/State-Pattern-order/finished.state";
+import { ProvisionedState } from "../src/State-Pattern-order/provisioned.state";
+import { SubmittedState } from "../src/State-Pattern-order/submitted.state";
 
 describe("Order class testing the State of Order", () => {
   let order: Order;
