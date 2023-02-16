@@ -1,5 +1,5 @@
-import { Component } from "./Component";
-import { Visitor } from "./visitor.component";
+import { Component } from "./component";
+import { Visitor } from "./visitor";
 
 export class CompositeComponent {
     private parts: Component[];

@@ -1,10 +1,11 @@
-import { CompositeComponent } from "./CompositeComponent";
-import { Visitor } from "./visitor.component";
+import { CompositeComponent } from "./composite.component";
+import { Visitor } from "./visitor";
 
 export class Row extends CompositeComponent {
     private rowNumber: number;
 
-    public Row(number: number) {
+    public constructor(number: number) {
+        super();
         this.rowNumber = number;
     }
 

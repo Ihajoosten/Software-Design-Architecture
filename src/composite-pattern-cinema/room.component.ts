@@ -1,10 +1,11 @@
-import { CompositeComponent } from "./CompositeComponent";
-import { Visitor } from "./visitor.component";
+import { CompositeComponent } from "./composite.component";
+import { Visitor } from "./visitor";
 
 export class Room extends CompositeComponent {
     private roomName: string;
 
-    public Room(name: string) {
+    public constructor(name: string) {
+        super();
         this.roomName = name;
     }
 

@@ -1,10 +1,11 @@
-import { CompositeComponent } from "./CompositeComponent";
-import { Visitor } from "./visitor.component";
+import { CompositeComponent } from "./composite.component";
+import { Visitor } from "./visitor";
 
 export class Seat extends CompositeComponent {
     private seatNumber: number;
 
-    public Seat(number: number) {
+    public constructor(number: number) {
+        super();
         this.seatNumber = number;
     }
 

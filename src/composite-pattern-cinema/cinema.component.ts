@@ -1,5 +1,5 @@
-import { CompositeComponent } from "./CompositeComponent";
-import { Visitor } from "./visitor.component";
+import { CompositeComponent } from "./composite.component";
+import { Visitor } from "./visitor";
 
 export class Cinema extends CompositeComponent {
     private cinemaName: string;

@@ -1,10 +1,11 @@
-import { CompositeComponent } from "./CompositeComponent";
-import { Visitor } from "./visitor.component";
+import { CompositeComponent } from "./composite.component";
+import { Visitor } from "./visitor";
 
 export class Hall extends CompositeComponent {
     private hallNumber: number;
 
-    public Hall(number: number) {
+    public constructor(number: number) {
+        super();
         this.hallNumber = number;
     }
 
