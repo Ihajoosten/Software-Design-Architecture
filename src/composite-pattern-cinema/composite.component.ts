@@ -1,4 +1,4 @@
-import { Component } from "./component";
+import { Component } from "./Component";
 import { Visitor } from "./visitor";
 
 export class CompositeComponent {
