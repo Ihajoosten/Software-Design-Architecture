@@ -1,13 +1,13 @@
-import { Cinema } from "../src/composite-pattern-cinema/Cinema";
+import { Cinema } from "../src/composite-pattern-cinema/cinema.component";
 
 describe("OrderExport class tests", () => {
-    let LucErdemCinema: Cinema;
+  let cinema: Cinema;
   beforeEach(() => {
-    // LucErdemCinema = new Cinema("");
+    cinema = new Cinema("");
   });
 
   it.only("Lol", () => {
 
-});
+  });
 
 });

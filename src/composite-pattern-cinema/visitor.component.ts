@@ -1,8 +1,8 @@
-import { Cinema } from "./Cinema";
-import { Hall } from "./Hall";
-import { Room } from "./Room";
-import { Row } from "./Row";
-import { Seat } from "./Seat";
+import { Cinema } from "./cinema.component";
+import { Hall } from "./hall.component";
+import { Room } from "./room.component";
+import { Row } from "./row.component";
+import { Seat } from "./seat.component";
 
 export abstract class Visitor {
     public abstract visitCinema(cinema: Cinema): void;

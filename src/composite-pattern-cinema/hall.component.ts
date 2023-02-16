@@ -1,5 +1,5 @@
 import { CompositeComponent } from "./CompositeComponent";
-import { Visitor } from "./Visitor";
+import { Visitor } from "./visitor.component";
 
 export class Hall extends CompositeComponent {
     private hallNumber: number;

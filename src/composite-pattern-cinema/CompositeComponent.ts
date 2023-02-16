@@ -1,11 +1,11 @@
 import { Component } from "./Component";
-import { Visitor } from "./Visitor";
+import { Visitor } from "./visitor.component";
 
 export class CompositeComponent {
     private parts: Component[];
 
-    public CompositeComponent() {
-       this.parts = new Array<Component>();
+    public constructor() {
+        this.parts = new Array<Component>();
     }
 
     public addComponent(component: Component): void {
