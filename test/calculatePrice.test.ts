@@ -4,7 +4,6 @@ import { MovieScreening } from "../src/Models/moviescreening.model";
 import { MovieTicket } from "../src/Models/movieTicket.model";
 import { Order } from "../src/Models/order.model";
 
-
 describe("Order class testing public methods", () => {
   it("getOrderNr should return order nr", () => {
     const order = new Order(1, OrderType.REGULAR);
@@ -16,24 +15,34 @@ describe("Test method Calculate Price", () => {
   it("Student orders 1 premium ticket in the weekend", () => {
     const order = new Order(2140212, OrderType.STUDENT);
     let movie = new Movie("Scream VI");
-    let movieScreening = new MovieScreening(new Date("2/18/2023"), 15, true, movie);
+    let movieScreening = new MovieScreening(
+      new Date("2/18/2023"),
+      15,
+      true,
+      movie
+    );
     movie.addScreening(movieScreening);
     let ticket = new MovieTicket(movieScreening, true, 1, 1, order.orderType);
-    order.addSeatReservation(ticket)
-    expect(order.calculatePrice()).toBe(17)
-  })
+    order.addSeatReservation(ticket);
+    expect(order.calculatePrice()).toBe(17);
+  });
 
   it("A student orders premium tickets not in the weekend with second ticket free", () => {
     const order = new Order(2140212, OrderType.STUDENT);
     let movie = new Movie("Scream VI");
-    let movieScreening = new MovieScreening(new Date("2/14/2023"), 15, false, movie);
+    let movieScreening = new MovieScreening(
+      new Date("2/14/2023"),
+      15,
+      false,
+      movie
+    );
     movie.addScreening(movieScreening);
     let ticket = new MovieTicket(movieScreening, true, 1, 1, order.orderType);
     let ticket2 = new MovieTicket(movieScreening, true, 1, 2, order.orderType);
-    order.addSeatReservation(ticket)
-    order.addSeatReservation(ticket2)
-    expect(order.calculatePrice()).toBe(17)
-  })
+    order.addSeatReservation(ticket);
+    order.addSeatReservation(ticket2);
+    expect(order.calculatePrice()).toBe(17);
+  });
 
   it("A student can order 1 normal ticket and should not get a fee", () => {
     const order = new Order(1, OrderType.STUDENT);
@@ -61,7 +70,13 @@ describe("Test method Calculate Price", () => {
     );
     movie.addScreening(movieScreening);
     let ticket = new MovieTicket(movieScreening, false, 2, 15, order.orderType);
-    let ticket2 = new MovieTicket(movieScreening, false, 2, 16, order.orderType);
+    let ticket2 = new MovieTicket(
+      movieScreening,
+      false,
+      2,
+      16,
+      order.orderType
+    );
     order.addSeatReservation(ticket);
     order.addSeatReservation(ticket2);
     expect(order.calculatePrice()).toBe(105);
@@ -93,11 +108,35 @@ describe("Test method Calculate Price", () => {
     );
     movie.addScreening(movieScreening);
     let ticket = new MovieTicket(movieScreening, true, 1, 15, order.orderType);
-    let ticket2 = new MovieTicket(movieScreening, false, 1, 16, order.orderType);
-    let ticket3 = new MovieTicket(movieScreening, false, 1, 17, order.orderType);
+    let ticket2 = new MovieTicket(
+      movieScreening,
+      false,
+      1,
+      16,
+      order.orderType
+    );
+    let ticket3 = new MovieTicket(
+      movieScreening,
+      false,
+      1,
+      17,
+      order.orderType
+    );
     let ticket4 = new MovieTicket(movieScreening, true, 1, 18, order.orderType);
-    let ticket5 = new MovieTicket(movieScreening, false, 1, 19, order.orderType);
-    let ticket6 = new MovieTicket(movieScreening, false, 1, 20, order.orderType);
+    let ticket5 = new MovieTicket(
+      movieScreening,
+      false,
+      1,
+      19,
+      order.orderType
+    );
+    let ticket6 = new MovieTicket(
+      movieScreening,
+      false,
+      1,
+      20,
+      order.orderType
+    );
     order.addSeatReservation(ticket);
     order.addSeatReservation(ticket2);
     order.addSeatReservation(ticket3);
@@ -105,7 +144,7 @@ describe("Test method Calculate Price", () => {
     order.addSeatReservation(ticket5);
     order.addSeatReservation(ticket6);
     expect(order.calculatePrice()).toBe(8);
-  })
+  });
 
   it("A customer can order 6 premium tickets on Tuesday and should not get a 10% discount", () => {
     const order = new Order(1, OrderType.REGULAR);
@@ -130,7 +169,7 @@ describe("Test method Calculate Price", () => {
     order.addSeatReservation(ticket5);
     order.addSeatReservation(ticket6);
     expect(order.calculatePrice()).toBe(24);
-  })
+  });
 
   it("A customer can order 6 premium tickets on Saturday and should get a 10% discount", () => {
     const order = new Order(1, OrderType.REGULAR);
@@ -155,5 +194,5 @@ describe("Test method Calculate Price", () => {
     order.addSeatReservation(ticket5);
     order.addSeatReservation(ticket6);
     expect(order.calculatePrice()).toBe(43.2);
-  })
-})
+  });
+});

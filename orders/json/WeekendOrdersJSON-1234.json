@@ -8,9 +8,7 @@
         "pricePerSeat": 2,
         "isWeekend": false,
         "movie": {
-          "movieScreening": [
-            "[Circular]"
-          ],
+          "movieScreening": ["[Circular]"],
           "title": "Leuke film"
         }
       },
@@ -24,9 +22,7 @@
         "pricePerSeat": 2,
         "isWeekend": false,
         "movie": {
-          "movieScreening": [
-            "[Circular]"
-          ],
+          "movieScreening": ["[Circular]"],
           "title": "Leuke film"
         }
       },

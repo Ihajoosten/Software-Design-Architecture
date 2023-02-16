@@ -5,7 +5,6 @@ import { MovieScreening } from "../src/Models/moviescreening.model";
 import { MovieTicket } from "../src/Models/movieTicket.model";
 import { Order } from "../src/Models/order.model";
 
-
 describe("OrderExport class tests", () => {
   beforeEach(() => {
     const order = new Order(1234, OrderType.STUDENT);

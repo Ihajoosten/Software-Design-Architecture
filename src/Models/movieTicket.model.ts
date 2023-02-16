@@ -1,8 +1,8 @@
 import { MovieScreening } from "./moviescreening.model";
-import { IPremiumBehaviour } from "../Functions/CheckPremium/IPremiumBehaviour";
 import { OrderType } from "./enumTypes";
-import { StudentPremium } from "../Functions/CheckPremium/studentPremium";
-import { RegularPremium } from "../Functions/CheckPremium/regularPremium";
+import { IPremiumBehaviour } from "../strategy-pattern-price/interfaces/IPremiumBehaviour";
+import { RegularPremium } from "../strategy-pattern-price/regularPremium";
+import { StudentPremium } from "../strategy-pattern-price/studentPremium";
 
 export class MovieTicket {
   private rowNr: number;
@@ -27,16 +27,19 @@ export class MovieTicket {
 
     switch (this.orderType) {
       case OrderType.REGULAR:
-        this.PremiumBehaviour = new RegularPremium()
+        this.PremiumBehaviour = new RegularPremium();
         break;
       case OrderType.STUDENT:
-        this.PremiumBehaviour = new StudentPremium()
+        this.PremiumBehaviour = new StudentPremium();
         break;
     }
   }
 
   public getPrice(): number {
-    return this.movieScreening.getPricePerSeat() + this.PremiumBehaviour.getPremiumPrice(this.isPremium);
+    return (
+      this.movieScreening.getPricePerSeat() +
+      this.PremiumBehaviour.getPremiumPrice(this.isPremium)
+    );
   }
 
   public getMovieScreening(): MovieScreening {
