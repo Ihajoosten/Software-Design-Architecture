@@ -1,5 +1,6 @@
 node_modules
-coverage/lcov-report
-coverage/clover.xml
-coverage/coverage-final.json
-build
+# coverage/lcov-report
+# coverage/clover.xml
+# coverage/coverage-final.json
+coverage/*
+build/*
