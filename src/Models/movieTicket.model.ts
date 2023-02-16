@@ -1,8 +1,9 @@
 import { MovieScreening } from "./moviescreening.model";
-import { IPremiumBehaviour } from "../Functions/CheckPremium/IPremiumBehaviour";
 import { OrderType } from "./enumTypes";
-import { StudentPremium } from "../Functions/CheckPremium/studentPremium";
-import { RegularPremium } from "../Functions/CheckPremium/regularPremium";
+import { IPremiumBehaviour } from "../strategy-pattern-price/IPremiumBehaviour";
+import { RegularPremium } from "../strategy-pattern-price/regularPremium";
+import { StudentPremium } from "../strategy-pattern-price/studentPremium";
+
 
 export class MovieTicket {
   private rowNr: number;

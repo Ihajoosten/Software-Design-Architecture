@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs';
-import { Order } from '../../Models/order.model';
+import { Order } from '../Models/order.model';
 import { IExportBehaviour } from './IExportBehaviour';
 
 export class ExportToText implements IExportBehaviour {

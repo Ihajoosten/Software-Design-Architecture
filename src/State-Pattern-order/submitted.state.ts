@@ -1,13 +1,13 @@
-import { CancelledState } from "./CancelledState";
-import { FinishedState } from "./FinishedState";
-import { OrderState } from "./OrderState";
-import { OrderStateHolder } from "./OrderStateHolder";
-import { ProvisionedState } from "./ProvisionedState";
+import { CancelledState } from "./cancelled.state";
+import { FinishedState } from "./finished.state";
+import { IOrderState } from "./IOrderState";
+import { IOrderStateHolder } from "./IOrderStateHolder";
+import { ProvisionedState } from "./provisioned.state";
 
-export class SubmittedState implements OrderState {
-  private readonly orderStateHolder: OrderStateHolder;
+export class SubmittedState implements IOrderState {
+  private readonly orderStateHolder: IOrderStateHolder;
 
-  constructor(orderStateHolder: OrderStateHolder) {
+  constructor(orderStateHolder: IOrderStateHolder) {
     this.orderStateHolder = orderStateHolder;
   }
   stateToString(): string {

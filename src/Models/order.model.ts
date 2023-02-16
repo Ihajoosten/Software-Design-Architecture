@@ -1,22 +1,40 @@
-import { ExportToJSON } from "../Functions/ExportOrder/exportToJSON";
-import { ExportToText } from "../Functions/ExportOrder/exportToPlainText";
-import { IExportBehaviour } from "../Functions/ExportOrder/IExportBehaviour";
-import { OrderState } from "../Functions/OrderState/OrderState";
-import { OrderStateHolder } from "../Functions/OrderState/OrderStateHolder";
-import { TemplateState } from "../Functions/OrderState/TemplateState";
+import { IPublisher } from "../Observer-Pattern-notification/interfaces/IPublisher";
+import { ISubscriber } from "../Observer-Pattern-notification/interfaces/ISubscriber";
+import { IOrderState } from "../State-Pattern-order/IOrderState";
+import { IOrderStateHolder } from "../State-Pattern-order/IOrderStateHolder";
+import { TemplateState } from "../State-Pattern-order/template.state";
+import { ExportToJSON } from "../strategy-pattern-export/exportToJSON";
+import { ExportToText } from "../strategy-pattern-export/exportToPlainText";
+import { IExportBehaviour } from "../strategy-pattern-export/IExportBehaviour";
 import { OrderType, TicketExportType } from "./enumTypes";
 import { MovieTicket } from "./movieTicket.model";
 
-export class Order implements OrderStateHolder {
+export class Order implements IOrderStateHolder, IPublisher {
   private orderNr: number;
   private seatReservations: Array<MovieTicket> = new Array<MovieTicket>();
   public ExportBehaviour: IExportBehaviour
   public orderType: OrderType;
-  public orderState: OrderState = new TemplateState(this);
+  public orderState: IOrderState = new TemplateState(this);
+  public subscribers: Array<ISubscriber>;
 
   public constructor(orderNr: number, orderType: OrderType) {
     this.orderNr = orderNr;
     this.orderType = orderType;
+    this.subscribers = new Array<ISubscriber>();
+  }
+
+  // Notify
+  public Subscribe(subscriber: ISubscriber): void {
+    this.subscribers.push(subscriber);
+  }
+
+  public UnSubscribe(subscriber: ISubscriber): void {
+    const index = this.subscribers.indexOf(subscriber, 0);
+    if (index > -1) this.subscribers.splice(index, 1);
+  }
+
+  Publish(orderState: IOrderState): void {
+    this.subscribers.forEach(sub => { sub.StatusUpdate(orderState) });
   }
 
   public getOrderNr(): number {
@@ -90,8 +108,9 @@ export class Order implements OrderStateHolder {
     this.orderState.Cancel();
   }
 
-  public UpdateState(newState: OrderState): void {
+  public UpdateState(newState: IOrderState): void {
     this.orderState = newState
+    this.Publish(newState);
   }
 
   public HoursUntilMovieChanged(hours: number): void {

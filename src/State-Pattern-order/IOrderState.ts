@@ -1,4 +1,4 @@
-export interface OrderState {
+export interface IOrderState {
   AddSeat(): void;
   RemoveSeat(): void;
   Submit(): void;

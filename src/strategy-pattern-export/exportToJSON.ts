@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs';
 import { jsonc } from 'jsonc';
-import { Order } from '../../Models/order.model';
+import { Order } from '../Models/order.model';
 import { IExportBehaviour } from './IExportBehaviour';
 
 export class ExportToJSON implements IExportBehaviour {
