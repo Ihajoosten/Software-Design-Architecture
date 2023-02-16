@@ -1,6 +1,6 @@
 import { MovieScreening } from "./moviescreening.model";
 import { OrderType } from "./enumTypes";
-import { IPremiumBehaviour } from "../strategy-pattern-price/IPremiumBehaviour";
+import { IPremiumBehaviour } from "../strategy-pattern-price/interfaces/IPremiumBehaviour";
 import { RegularPremium } from "../strategy-pattern-price/regularPremium";
 import { StudentPremium } from "../strategy-pattern-price/studentPremium";
 

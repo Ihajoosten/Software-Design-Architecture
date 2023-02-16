@@ -5,5 +5,4 @@ export interface IOrderState {
   Pay(): void;
   Cancel(): void;
   HoursUntilMovieChanged(hours: number): void;
-  stateToString(): string;
 }

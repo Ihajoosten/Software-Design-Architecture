@@ -1,5 +1,5 @@
-import { json } from "stream/consumers";
-import { IOrderState } from "../../State-Pattern-order/IOrderState";
+import { jsonc } from "jsonc";
+import { IOrderState } from "../../State-Pattern-order/interfaces/IOrderState";
 import { ISubscriber } from "../interfaces/ISubscriber";
 import { IWhatsappService } from "../interfaces/IWhatsappService";
 import { WhatsappService } from "../services/whatsapp.service";
@@ -12,6 +12,6 @@ export class WhatsappSubscriber implements ISubscriber {
   }
 
   StatusUpdate(message: IOrderState): void {
-    this.service.SendWhatsappMessage(message.stateToString());
+    this.service.SendWhatsappMessage(jsonc.stringify(message));
   }
 }

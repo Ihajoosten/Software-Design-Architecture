@@ -1,7 +1,7 @@
 import { CancelledState } from "./cancelled.state";
 import { FinishedState } from "./finished.state";
-import { IOrderState } from "./IOrderState";
-import { IOrderStateHolder } from "./IOrderStateHolder";
+import { IOrderState } from "./interfaces/IOrderState";
+import { IOrderStateHolder } from "./interfaces/IOrderStateHolder";
 import { ProvisionedState } from "./provisioned.state";
 
 export class SubmittedState implements IOrderState {
@@ -10,10 +10,6 @@ export class SubmittedState implements IOrderState {
   constructor(orderStateHolder: IOrderStateHolder) {
     this.orderStateHolder = orderStateHolder;
   }
-  stateToString(): string {
-    return "SubmittedState";
-  }
-
   AddSeat(): void {
     console.log("New seat added to the Order");
   }

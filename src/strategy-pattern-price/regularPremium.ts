@@ -1,4 +1,4 @@
-import { IPremiumBehaviour } from "./IPremiumBehaviour";
+import { IPremiumBehaviour } from "./interfaces/IPremiumBehaviour";
 
 export class RegularPremium implements IPremiumBehaviour {
   getPremiumPrice(isPremium: boolean): number {

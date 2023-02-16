@@ -1,11 +1,11 @@
 import { IPublisher } from "../Observer-Pattern-notification/interfaces/IPublisher";
 import { ISubscriber } from "../Observer-Pattern-notification/interfaces/ISubscriber";
-import { IOrderState } from "../State-Pattern-order/IOrderState";
-import { IOrderStateHolder } from "../State-Pattern-order/IOrderStateHolder";
+import { IOrderState } from "../State-Pattern-order/interfaces/IOrderState";
+import { IOrderStateHolder } from "../State-Pattern-order/interfaces/IOrderStateHolder";
 import { TemplateState } from "../State-Pattern-order/template.state";
 import { ExportToJSON } from "../strategy-pattern-export/exportToJSON";
 import { ExportToText } from "../strategy-pattern-export/exportToPlainText";
-import { IExportBehaviour } from "../strategy-pattern-export/IExportBehaviour";
+import { IExportBehaviour } from "../strategy-pattern-export/interfaces/IExportBehaviour";
 import { OrderType, TicketExportType } from "./enumTypes";
 import { MovieTicket } from "./movieTicket.model";
 
@@ -14,13 +14,14 @@ export class Order implements IOrderStateHolder, IPublisher {
   private seatReservations: Array<MovieTicket> = new Array<MovieTicket>();
   public ExportBehaviour: IExportBehaviour;
   public orderType: OrderType;
-  public orderState: IOrderState = new TemplateState(this);
+  public orderState: IOrderState;
   public subscribers: Array<ISubscriber>;
 
   public constructor(orderNr: number, orderType: OrderType) {
     this.orderNr = orderNr;
     this.orderType = orderType;
     this.subscribers = new Array<ISubscriber>();
+    this.orderState = new TemplateState(this);
   }
 
   // Notify
@@ -33,7 +34,7 @@ export class Order implements IOrderStateHolder, IPublisher {
     if (index > -1) this.subscribers.splice(index, 1);
   }
 
-  Publish(orderState: IOrderState): void {
+  public Publish(orderState: IOrderState): void {
     this.subscribers.forEach((sub) => {
       sub.StatusUpdate(orderState);
     });
@@ -125,9 +126,5 @@ export class Order implements IOrderStateHolder, IPublisher {
 
   public HoursUntilMovieChanged(hours: number): void {
     this.orderState.HoursUntilMovieChanged(hours);
-  }
-
-  public GetOrderState(): string {
-    return this.orderState.stateToString();
   }
 }

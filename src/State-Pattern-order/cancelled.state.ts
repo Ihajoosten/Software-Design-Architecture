@@ -1,15 +1,11 @@
-import { IOrderState } from "./IOrderState";
-import { IOrderStateHolder } from "./IOrderStateHolder";
+import { IOrderState } from "./interfaces/IOrderState";
+import { IOrderStateHolder } from "./interfaces/IOrderStateHolder";
 
 export class CancelledState implements IOrderState {
   private readonly orderStateHolder: IOrderStateHolder;
 
   constructor(orderStateHolder: IOrderStateHolder) {
     this.orderStateHolder = orderStateHolder;
-  }
-
-  stateToString(): string {
-    return "CancelledState";
   }
 
   AddSeat(): void {

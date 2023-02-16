@@ -1,4 +1,4 @@
-import { IOrderState } from "../../State-Pattern-order/IOrderState";
+import { IOrderState } from "../../State-Pattern-order/interfaces/IOrderState";
 import { ISubscriber } from "./ISubscriber";
 
 export interface IPublisher {

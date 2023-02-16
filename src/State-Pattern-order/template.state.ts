@@ -1,6 +1,6 @@
 import { CancelledState } from "./cancelled.state";
-import { IOrderState } from "./IOrderState";
-import { IOrderStateHolder } from "./IOrderStateHolder";
+import { IOrderState } from "./interfaces/IOrderState";
+import { IOrderStateHolder } from "./interfaces/IOrderStateHolder";
 import { SubmittedState } from "./submitted.state";
 
 export class TemplateState implements IOrderState {
@@ -8,10 +8,6 @@ export class TemplateState implements IOrderState {
 
   constructor(orderStateHolder: IOrderStateHolder) {
     this.orderStateHolder = orderStateHolder;
-  }
-
-  stateToString(): string {
-    return "TemplateState";
   }
 
   AddSeat(): void {

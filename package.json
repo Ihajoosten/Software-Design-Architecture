@@ -2,9 +2,9 @@
   "name": "soa3-casus-bioscoop",
   "version": "1.0.0",
   "description": "Typescript Version of Bioscoop Casus SOA3",
-  "main": "app.ts",
+  "main": "main.ts",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --passWithNoTests",
     "start": "ts-node src/test.ts",
     "prettier": "prettier --write ."
   },

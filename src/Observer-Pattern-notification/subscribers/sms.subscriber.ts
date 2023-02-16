@@ -1,4 +1,5 @@
-import { IOrderState } from "../../State-Pattern-order/IOrderState";
+import { jsonc } from "jsonc";
+import { IOrderState } from "../../State-Pattern-order/interfaces/IOrderState";
 import { ISmsService } from "../interfaces/ISmsService";
 import { ISubscriber } from "../interfaces/ISubscriber";
 import { SmsService } from "../services/sms.service";
@@ -11,6 +12,6 @@ export class SmsSubscriber implements ISubscriber {
   }
 
   StatusUpdate(message: IOrderState): void {
-    this.service.SendSMSMessage(message.stateToString());
+    this.service.SendSMSMessage(jsonc.stringify(message));
   }
 }
