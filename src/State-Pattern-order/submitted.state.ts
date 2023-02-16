@@ -15,11 +15,11 @@ export class SubmittedState implements IOrderState {
   }
 
   AddSeat(): void {
-    console.log("Added new seat");
+    console.log("New seat added to the Order");
   }
 
   RemoveSeat(): void {
-    console.log("Removed a seat");
+    console.log("Seat removed from the Order");
   }
 
   Submit(): void {

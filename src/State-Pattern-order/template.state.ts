@@ -29,7 +29,7 @@ export class TemplateState implements IOrderState {
   }
 
   Pay(): void {
-    console.log("You cannot pay here");
+    console.log("You cannot pay for the order");
   }
 
   Cancel(): void {

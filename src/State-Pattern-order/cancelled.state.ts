@@ -13,19 +13,19 @@ export class CancelledState implements IOrderState {
   }
 
   AddSeat(): void {
-    console.log("Order is Cancled");
+    console.log("You cannot add a new seat because the order is canceled!");
   }
   RemoveSeat(): void {
-    console.log("Order is Cancled");
+    console.log("You cannot remove a seat because the order is canceled");
   }
   Submit(): void {
-    console.log("Order is Cancled");
+    console.log("You cannot submit the order because it has been canceled!");
   }
   Pay(): void {
-    console.log("Order is Cancled");
+    console.log("You cannot pay for the order because it has been canceled!");
   }
   Cancel(): void {
-    console.log("Order is Cancled");
+    console.log("The Order is now canceled");
   }
   HoursUntilMovieChanged(hours: number): void {
     console.log("Order is Cancled");

@@ -15,15 +15,17 @@ export class ProvisionedState implements IOrderState {
   }
 
   AddSeat(): void {
-    console.log("Order is solid");
+    console.log("You can't add a new seat because the order is provisioned!");
   }
 
   RemoveSeat(): void {
-    console.log("Order is solid");
+    console.log(
+      "You can't remove a seat because the order is already provisioned!"
+    );
   }
 
   Submit(): void {
-    console.log("Order is solid");
+    console.log("Order has already been provisioned!");
   }
 
   Pay(): void {
